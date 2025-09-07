@@ -31,3 +31,20 @@ go run go/main.go
 - Prefer slices over arrays; preallocate with `make` when size known
 
 See `go/main.go` for runnable examples.
+
+---
+
+## Advanced topics
+
+- Concurrency patterns: worker pools, context cancellation, fan-in/out
+- `sync` package: `WaitGroup`, `Mutex`, `RWMutex`, `Cond`, `Once`
+- `atomic` operations for low-level concurrency
+- Generics (Go 1.18+): type parameters, constraints, comparable
+- `errors.Join` (1.20) and wrapping with `%w`
+- Profiling with `pprof`, tracing, and benchmarking practices
+- `io.Reader`/`Writer` composition; custom `net/http` middleware
+
+## References
+
+- Go tour: `https://go.dev/tour/`
+- Effective Go: `https://go.dev/doc/effective_go`

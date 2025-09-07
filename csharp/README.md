@@ -29,3 +29,19 @@ dotnet run --project csharp
 - Configure `JsonSerializerOptions` for strict casing and null handling
 
 See `csharp/Program.cs` for runnable examples.
+
+---
+
+## Advanced topics
+
+- Span-based APIs: `Span<T>`, `Memory<T>`, `ReadOnlySpan<T>` for allocation-free pipelines
+- Source generators and analyzers; Roslyn APIs
+- High-performance JSON with `Utf8JsonReader`/`Writer`
+- Channels and pipelines for streaming scenarios
+- Minimal APIs and ASP.NET Core for quick HTTP services
+- Native AOT publishing (NET 8)
+
+## References
+
+- .NET docs: `https://learn.microsoft.com/dotnet/`
+- C# language spec: `https://learn.microsoft.com/dotnet/csharp/language-reference/`

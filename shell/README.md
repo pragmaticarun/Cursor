@@ -27,3 +27,17 @@ bash shell/run.sh
 - Use `trap` for cleanup, and `mktemp` for temp files
 
 See `shell/run.sh` for runnable examples.
+
+---
+
+## Advanced topics
+
+- Process substitution `<( )`, coprocesses `coproc`
+- xargs parallelism, GNU parallel
+- awk scripting basics and functions
+- sed capture groups and in-place edits
+- Strict modes and error propagation in pipelines (`set -o pipefail`)
+
+## References
+
+- Bash manual: `https://www.gnu.org/software/bash/manual/bash.html`
