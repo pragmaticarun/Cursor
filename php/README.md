@@ -3,19 +3,21 @@
 ## Quick start
 
 ```bash
-php -v
-php index.php
+php php/index.php
 ```
 
 ## Language basics
 
-- Types, scalar and union types
-- Arrays and associative arrays
-- OOP: classes, interfaces, traits
-- Exceptions
+- Scalars, arrays (lists and associative), object types, enums (8.1+)
+- OOP: classes, interfaces, traits, attributes
+- Exceptions and error handling
+- Namespaces, autoloading (Composer)
 
 ## Standard library highlights
 
-- JSON, DateTime, filesystem functions
+- JSON (`json_encode/json_decode`), DateTime
+- Filesystem: `SplFileObject`, `FilesystemIterator`
+- Strings: `mbstring`, `preg_*` regex
+- HTTP: `curl` extension (or Guzzle library)
 
-See `index.php` for a runnable demo.
+See `php/index.php` for runnable examples.

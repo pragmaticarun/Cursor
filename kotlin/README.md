@@ -3,21 +3,20 @@
 ## Quick start
 
 ```bash
-# Using kotlinc if installed
-kotlinc Main.kt -include-runtime -d app.jar && java -jar app.jar
+kotlinc kotlin/Main.kt -include-runtime -d kotlin/app.jar && java -jar kotlin/app.jar
 ```
 
 ## Language basics
 
-- `val` vs `var`, nullable types, Elvis `?:`
-- Data classes, sealed classes
-- Extension functions
-- Coroutines (with kotlinx.coroutines)
+- Null-safety, `?`, `!!`, Elvis `?:`, `let`, `also`, `apply`
+- Data classes, sealed classes, object singletons, companion objects
+- Extension functions/properties, infix functions
+- Coroutines (kotlinx.coroutines): `launch`, `async`, `flow`
 
 ## Standard library highlights
 
-- Collections, sequences
-- `java.time` interop
-- File I/O with `java.nio.file`
+- Collections and sequences; mapping, filtering, grouping
+- `Result`, `runCatching`
+- Interop with Java (`java.time`, `Files`)
 
-See `Main.kt` for a runnable demo.
+See `kotlin/Main.kt` for runnable examples.

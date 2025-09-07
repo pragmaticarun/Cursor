@@ -5,23 +5,33 @@ Type-safe JavaScript with powerful tooling.
 ## Quick start
 
 ```bash
-# Compile without a project (uses defaults)
-npx tsc main.ts --target ES2020 --lib ES2020,DOM --outDir dist
-node dist/main.js
+# One-off compile
+npx tsc typescript/main.ts --project typescript --outDir typescript/dist
+node typescript/dist/main.js
 ```
 
 ## Language basics
 
-- **Types**: primitives, arrays, tuples, enums, literal types
-- **Unions/Intersections** and type narrowing
-- **Interfaces** and **type aliases**
-- **Generics**
-- **Classes** and access modifiers
-- **Modules**
-- **Async/await** with typed promises
+- Types: primitives, arrays, tuples, enums, literal types
+- Unions/Intersections and type narrowing (control flow analysis)
+- Interfaces and type aliases; structural typing
+- Generics with constraints and defaults
+- Classes and access modifiers; `readonly`; parameter properties
+- Modules and namespaces (prefer modules)
+- Async/await with typed promises
 
-## Utility types
+## Advanced types
 
-- `Partial`, `Required`, `Pick`, `Omit`, `Record`, `ReturnType`
+- Discriminated unions for variant modeling
+- Conditional types and infer: `T extends U ? X : Y`
+- Mapped types: `{ [K in keyof T]: ... }`
+- Utility types: `Partial`, `Required`, `Pick`, `Omit`, `Record`, `ReturnType`, `Awaited`
+- Template literal types and key remapping
 
-See `main.ts` for a runnable demo.
+## Tooling
+
+- `tsconfig.json` controls target, module, libs, strictness
+- Enable `"strict": true` for maximum safety
+- Use ESLint and Prettier for linting/formatting
+
+See `typescript/main.ts` for a runnable demo and `typescript/tsconfig.json` for a suggested config.

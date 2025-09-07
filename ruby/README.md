@@ -3,18 +3,20 @@
 ## Quick start
 
 ```bash
-ruby --version
-ruby main.rb
+ruby ruby/main.rb
 ```
 
 ## Language basics
 
-- Everything is an object; blocks, procs, lambdas
+- Objects, modules, classes; mixins with `include`
+- Blocks, procs, lambdas; Enumerable
 - Symbols, arrays, hashes
-- Modules, classes, mixins
+- Pattern matching (`case/in`), safe navigation `&.`
 
 ## Core libraries
 
-- `Time`, `JSON`, `File`/`Dir`
+- Time/Date, JSON, File/Dir, Pathname
+- Open3 for subprocesses
+- Net::HTTP for HTTP
 
-See `main.rb` for a runnable demo.
+See `ruby/main.rb` for runnable examples.

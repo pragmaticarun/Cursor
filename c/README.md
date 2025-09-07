@@ -1,29 +1,35 @@
 # C Tutorial: Language Essentials and Standard Library (C11)
 
-A focused guide to modern C (C11) with portable standard library usage.
-
 ## Quick start
 
 ```bash
-# Compile and run
-gcc -std=c11 -Wall -Wextra -O2 main.c -o app && ./app
+gcc -std=c11 -Wall -Wextra -O2 c/main.c -o c/app && ./c/app
 ```
 
 ## Language basics
 
-- Primitives: integers (`int`, `long long`), floating (`double`), `char`, `_Bool`
-- Pointers and arrays; pointer arithmetic
-- `struct` and `enum`
+- Types: fixed-width integers (`stdint.h`), floating types, `char`, `_Bool`
+- Pointers and arrays; pointer arithmetic; `restrict`
+- `struct`, `enum`, bitfields; `typedef`
 - Control flow: `if`, `switch`, loops, `break`/`continue`
-- Functions: prototypes, `static`, `inline`
-- Lifetime: stack vs heap (`malloc`/`free`)
+- Functions: prototypes, `static`, `inline`, variadic (`stdarg.h`)
+- Lifetime: stack vs heap (`malloc`/`calloc`/`realloc`/`free`)
+- `const` correctness; `volatile` for hardware/atomics context
 
 ## Standard library highlights
 
-- `<stdio.h>`: I/O (`printf`, `fgets`, `fopen`)
-- `<stdlib.h>`: memory, conversions, sorting (`qsort`)
-- `<string.h>`: string and memory utilities
-- `<time.h>`: time utilities
-- `<ctype.h>`: character classification
+- I/O: `<stdio.h>` `printf`, `scanf`, `fopen`, `fgets`, `fprintf`
+- Memory and utils: `<stdlib.h>` `malloc`, `free`, `qsort`, `bsearch`, `strtol`
+- Strings/memory: `<string.h>` `memcpy`, `memset`, `strcmp`, `strncpy`
+- Time: `<time.h>` `clock_gettime` (POSIX), `time`, `strftime`
+- Character classification: `<ctype.h>` `isalpha`, `isdigit`
+- Math: `<math.h>` `sqrt`, `pow`, `fabs`
+- Fixed-width ints: `<stdint.h>`; limits: `<limits.h>`
 
-See `main.c` for a runnable demo.
+## Guidance
+
+- Always check pointers and return codes
+- Avoid buffer overflows; use length-checked functions
+- Keep interfaces simple; document ownership and lifetimes
+
+See `c/main.c` for runnable examples.

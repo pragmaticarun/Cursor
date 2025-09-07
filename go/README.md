@@ -3,22 +3,31 @@
 ## Quick start
 
 ```bash
-go run main.go
+go run go/main.go
 ```
 
 ## Language basics
 
-- Packages and modules
 - Types: bool, numeric, string, arrays, slices, maps, structs
-- Pointers (no pointer arithmetic), methods, interfaces
-- Control flow: if, for, switch, defer
-- Concurrency: goroutines and channels
+- Pointers (no pointer arithmetic), methods with value/pointer receivers
+- Interfaces and structural typing; embedding
+- Control flow: if, for, switch, type switch, defer, panic/recover
+- Concurrency: goroutines, channels (unbuffered/buffered), `select`
+- Modules and package layout
 
 ## Standard library highlights
 
-- `fmt`, `strings`, `strconv`
-- `time`, `context`
-- `io`, `os`, `path/filepath`
-- `net/http`
+- Text: `strings`, `bytes`, `regexp`, `strconv`
+- I/O: `io`, `os`, `bufio`, `path/filepath`
+- Time/ctx: `time`, `context`
+- Net: `net/http`, `net`, `encoding/json`
+- Sort/collections: `sort`, `container/heap`
+- Testing: `testing`, benchmarks, examples
 
-See `main.go` for a runnable demo.
+## Idioms
+
+- Return `(value, error)`; use `errors.Is/As`
+- Use `defer` for cleanup
+- Prefer slices over arrays; preallocate with `make` when size known
+
+See `go/main.go` for runnable examples.

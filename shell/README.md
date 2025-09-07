@@ -3,20 +3,27 @@
 ## Quick start
 
 ```bash
-bash run.sh
+bash shell/run.sh
 ```
 
 ## Basics
 
-- Variables, quoting, command substitution
-- Conditionals: `if`, `[[ ]]`, test expressions
-- Loops: `for`, `while`
-- Functions
-- Pipelines and redirection
+- Variables, quoting, command substitution `$(...)`
+- Conditionals: `if`, `[[ ]]`
+- Loops: `for`, `while`, `until`
+- Functions; `set -euo pipefail`
+- Pipelines and redirection, here-docs
 
 ## Core utilities
 
-- `grep`, `sed`, `awk`, `cut`, `sort`, `uniq`
-- `find`, `xargs`
+- Text: `grep`, `sed`, `awk`, `cut`, `tr`, `sort`, `uniq`, `wc`
+- Files: `find`, `xargs`, `rsync`, `tar`
+- Networking: `curl`, `dig`, `nc`
+- JSON/YAML: `jq`, `yq` (external tools)
 
-See `run.sh` for a runnable demo.
+## Best practices
+
+- Quote variables, prefer arrays for word-safety
+- Use `trap` for cleanup, and `mktemp` for temp files
+
+See `shell/run.sh` for runnable examples.
