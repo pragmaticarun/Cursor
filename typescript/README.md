@@ -35,3 +35,24 @@ node typescript/dist/main.js
 - Use ESLint and Prettier for linting/formatting
 
 See `typescript/main.ts` for a runnable demo and `typescript/tsconfig.json` for a suggested config.
+
+---
+
+## Advanced language features
+
+- Generic constraints with `extends`, defaults `T = string`, higher-kinded-like patterns via interfaces
+- Variadic tuple types, labeled tuple elements
+- `satisfies` operator (TS 4.9+) for shape-checking without widening
+- `as const` for literal inference and readonly arrays/objects
+- `readonly` arrays (`readonly T[]`) and Readonly maps/records
+- Decorators (proposed) with `experimentalDecorators` for metadata-based frameworks
+
+## Large project guidance
+
+- Path aliases via `compilerOptions.paths` + Node `--experimental-specifier-resolution` for ESM
+- Project references for monorepos; incremental builds
+- Public API typing via `types`/`exports` in `package.json`
+
+## References
+
+- TS Handbook: `https://www.typescriptlang.org/docs/handbook/intro.html`

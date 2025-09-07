@@ -20,3 +20,18 @@ ruby ruby/main.rb
 - Net::HTTP for HTTP
 
 See `ruby/main.rb` for runnable examples.
+
+---
+
+## Advanced topics
+
+- Refinements for scoped monkey-patching
+- Fiber scheduler (3.0+) for async I/O
+- Concurrency: Ractors (experimental), threads, Mutex
+- FFI with `fiddle`; native extensions
+- Performance tooling: benchmark-ips, stackprof, memory_profiler
+
+## References
+
+- Ruby docs: `https://ruby-doc.org/`
+- Ruby style guide: `https://rubystyle.guide/`

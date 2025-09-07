@@ -21,3 +21,18 @@ php php/index.php
 - HTTP: `curl` extension (or Guzzle library)
 
 See `php/index.php` for runnable examples.
+
+---
+
+## Advanced topics
+
+- Attributes for metadata; reflection API
+- Generators with `yield` for streaming
+- Fibers (8.1+) for cooperative concurrency
+- Typed properties and readonly classes (8.2)
+- Opcache and performance tuning
+
+## References
+
+- PHP manual: `https://www.php.net/manual/en/`
+- PSR standards: `https://www.php-fig.org/psr/`

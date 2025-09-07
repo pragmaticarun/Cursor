@@ -36,3 +36,34 @@ node javascript/index.js
 - Use streams for large I/O to avoid buffering entire files
 
 See `javascript/index.js` for a runnable demo of destructuring, arrays, sets/maps, regex, file I/O, and async.
+
+---
+
+## Advanced language features
+
+- Iteration protocols: custom iterables/iterators, `Symbol.iterator` and `Symbol.asyncIterator`
+- Generators and async generators (`for await...of`)
+- Proxies and `Reflect` for meta-programming
+- Symbols as non-colliding keys; well-known symbols (`toStringTag`, `hasInstance`)
+- Error handling best-practices with `AggregateError` and causal errors (`new Error('x',{cause:e})`)
+- `AbortController`/`AbortSignal` for cancellable async APIs
+
+## Advanced Node APIs
+
+- Streams: object-mode transforms, pipeline/finished, backpressure control
+- Buffers and TypedArrays for binary data
+- Worker Threads for CPU-bound tasks; `MessageChannel`
+- Child processes (`spawn`, `execFile`) and IPC
+- Performance: `perf_hooks`, `v8` heap statistics
+- Diagnostics: `node --inspect`, `console.time`, `diagnostics_channel`
+
+## Tooling
+
+- Format with Prettier; lint with ESLint
+- Test with Vitest/Jest; add coverage with c8/nyc
+- Package as ESM, declare exports in `package.json` `exports`
+
+## References
+
+- MDN JS docs: `https://developer.mozilla.org/docs/Web/JavaScript`
+- Node API: `https://nodejs.org/api/`

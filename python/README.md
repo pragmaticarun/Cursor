@@ -70,3 +70,37 @@ print(list(it.groupby(sorted([1,1,2,3,3]))))
 ```
 
 See `python/main.py` for a runnable demo covering regex, caching, filesystem, datetime, JSON, and asyncio.
+
+---
+
+## Advanced language features
+
+- Pattern matching with `match`/`case` (guards, sequence/dict patterns)
+- Descriptors and `@property` for rich attribute behavior
+- `__enter__/__exit__` and `contextlib.contextmanager` for custom contexts
+- `dataclasses` advanced: `slots=True`, `frozen=True`, `kw_only=True`
+- `typing` advanced: `TypeVar`, `ParamSpec`, `TypedDict`, `Protocol`, `Self`, `Final`
+- `asyncio` advanced: `gather`, `wait_for`, cancellation, `TaskGroup` (3.11)
+- `concurrent.futures` thread/process pools for CPU vs I/O workloads
+- Multiprocessing shared data (`multiprocessing.Manager`) and queues
+
+## Useful stdlib cookbook
+
+- `argparse` for CLIs with subcommands and help text
+- `logging` with dictConfig, structured logs, and handlers/formatters
+- `subprocess.run([...], check=True, capture_output=True, text=True)` for robust child processes
+- `tempfile.TemporaryDirectory()` and `NamedTemporaryFile()` for safe temp artifacts
+- `pathlib.Path` for atomic replace: `tmp.write_text(...); tmp.replace(target)`
+- `zoneinfo.ZoneInfo("UTC")` for timezone-aware datetimes
+
+## Tooling and packaging
+
+- Use `pyproject.toml` (PEP 621) for builds and tool config
+- Format with Black, import-sort with isort, lint with Ruff/Flake8, type-check with mypy/pyright
+- Test with pytest and `pytest-asyncio` for async tests
+
+## Further reading
+
+- Python docs: `https://docs.python.org/3/`
+- `https://docs.python.org/3/library/index.html`
+- `https://peps.python.org/`
