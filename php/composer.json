@@ -1,0 +1,11 @@
+{
+  "name": "tutorial/php",
+  "require-dev": {
+    "phpunit/phpunit": "^10",
+    "friendsofphp/php-cs-fixer": "^3.59"
+  },
+  "scripts": {
+    "test": "phpunit",
+    "format": "php-cs-fixer fix --allow-risky=yes"
+  }
+}
