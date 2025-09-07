@@ -1,6 +1,6 @@
 SHELL:=/usr/bin/bash
 
-.PHONY: run test format
+.PHONY: run test format examples
 
 run:
 	bash run.sh
@@ -10,3 +10,6 @@ test:
 
 format:
 	command -v shfmt >/dev/null 2>&1 && shfmt -w . || true
+
+examples:
+	bash run.sh world

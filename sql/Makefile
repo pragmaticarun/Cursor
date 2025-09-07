@@ -1,6 +1,6 @@
 DB=demo.db
 
-.PHONY: run format clean
+.PHONY: run format clean examples
 
 run:
 	sqlite3 $(DB) < example.sql
@@ -10,3 +10,5 @@ format:
 
 clean:
 	rm -f $(DB)
+
+examples: run

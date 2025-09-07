@@ -13,5 +13,8 @@ class Program
 
         var json = JsonSerializer.Serialize(users);
         Console.WriteLine(json);
+
+        // Span example
+        Console.WriteLine(SpanExample.Sum(new int[]{1,2,3,4}));
     }
 }

@@ -14,3 +14,8 @@ desc 'Format'
 task :format do
   sh 'rubocop -A || true'
 end
+
+desc 'Examples'
+task :examples do
+  sh 'ruby examples/enumerable.rb'
+end
