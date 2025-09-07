@@ -3,20 +3,20 @@
 ## Quick start
 
 ```bash
-swiftc main.swift -o app && ./app
+swiftc swift/main.swift -o swift/app && ./swift/app
 ```
 
 ## Language basics
 
-- `let` vs `var`, optionals, `guard`/`if let`
-- Structs, classes, enums, protocols
-- Generics and extensions
-- Error handling: `try`/`throws`/`do`-`catch`
+- Optionals, `guard`/`if let`, optional chaining
+- Value types (struct/enum) vs reference types (class)
+- Protocols, protocol extensions, generics
+- Error handling: `throws`, `rethrows`, `Result`
 
-## Standard library highlights
+## Standard library & Foundation
 
-- `Array`, `Dictionary`, `Set`
-- `Codable` for JSON
-- `Foundation` for dates, files, URLs
+- Collections: `Array`, `Dictionary`, `Set`
+- Codable for JSON; `JSONEncoder`/`Decoder`
+- Dates and files with Foundation
 
-See `main.swift` for a runnable demo.
+See `swift/main.swift` for runnable examples.

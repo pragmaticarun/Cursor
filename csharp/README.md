@@ -3,22 +3,29 @@
 ## Quick start
 
 ```bash
-# Requires .NET SDK
-dotnet new console -o demo && cd demo
-dotnet run
+dotnet run --project csharp
 ```
 
 ## Language basics
 
-- Types, `var`, nullable reference types
-- Records, classes, interfaces
-- LINQ and lambdas
-- async/await and tasks
+- Types and nullable reference types (`string?`)
+- Records vs classes; with-expressions; `init` accessors
+- Pattern matching: `switch`, `is`, relational patterns
+- LINQ: `Select`, `Where`, `Aggregate`, query syntax
+- Async/await: `Task`, `ValueTask`, cancellation
 
 ## BCL highlights
 
-- Collections: `List<T>`, `Dictionary<TKey,TValue>`
-- `System.IO`, `System.Text.Json`
-- `System.Linq`
+- Collections: `List<T>`, `Dictionary<TKey,TValue>`, `ImmutableArray<T>` (System.Collections.Immutable)
+- IO: `System.IO` (streams, files), `System.IO.Pipelines`
+- Text/JSON: `System.Text.RegularExpressions`, `System.Text.Json`
+- Parallelism: `System.Threading.Tasks`, `Parallel`, `PLINQ`
+- Time: `DateTimeOffset`, `TimeOnly`, `Stopwatch`
 
-See `Program.csproj` and `Program.cs` for a runnable demo.
+## Guidance
+
+- Prefer records for immutable DTOs; classes for behavior
+- Use `await using` for async disposables
+- Configure `JsonSerializerOptions` for strict casing and null handling
+
+See `csharp/Program.cs` for runnable examples.
