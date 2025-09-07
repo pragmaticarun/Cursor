@@ -1,0 +1,1 @@
+puts (1..5).map { _1 * _1 }.select(&:odd?).inspect

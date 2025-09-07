@@ -1,6 +1,6 @@
 GO=go
 
-.PHONY: run test fmt vet
+.PHONY: run test fmt vet examples
 
 run:
 	$(GO) run ./...
@@ -11,3 +11,6 @@ test:
 fmt:
 	$(GO) fmt ./...
 	$(GO) vet ./...
+
+examples:
+	$(GO) run ./examples/...

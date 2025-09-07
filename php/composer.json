@@ -6,6 +6,7 @@
   },
   "scripts": {
     "test": "phpunit",
-    "format": "php-cs-fixer fix --allow-risky=yes"
+    "format": "php-cs-fixer fix --allow-risky=yes",
+    "examples": "php examples/generators.php"
   }
 }
