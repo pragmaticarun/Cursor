@@ -1,0 +1,13 @@
+GO=go
+
+.PHONY: run test fmt vet
+
+run:
+	$(GO) run ./...
+
+test:
+	$(GO) test ./...
+
+fmt:
+	$(GO) fmt ./...
+	$(GO) vet ./...
