@@ -2,7 +2,7 @@ ZIG?=$(CURDIR)/.tools/zig/zig
 
 .PHONY: ensure-zig
 ensure-zig:
-	@if ! command -v $(ZIG) >/dev/null 2>&1; then \
+	@if [ ! -x $(ZIG) ]; then \
 		echo "Bootstrapping Zig..." ; \
 		./scripts/bootstrap_zig.sh ; \
 	fi

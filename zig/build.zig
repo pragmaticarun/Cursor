@@ -35,7 +35,7 @@ pub fn build(b: *std.Build) void {
     inline for (lang_examples) |ex| {
         const exe = b.addExecutable(.{
             .name = ex.name,
-            .root_source_file = .{ .path = ex.src },
+            .root_source_file = b.path(ex.src),
             .target = target,
             .optimize = optimize,
         });
@@ -47,7 +47,7 @@ pub fn build(b: *std.Build) void {
         run_all.dependOn(&run_cmd.step);
 
         const t = b.addTest(.{
-            .root_source_file = .{ .path = ex.src },
+            .root_source_file = b.path(ex.src),
             .target = target,
             .optimize = optimize,
         });
@@ -60,7 +60,7 @@ pub fn build(b: *std.Build) void {
     inline for (std_examples) |ex| {
         const exe = b.addExecutable(.{
             .name = ex.name,
-            .root_source_file = .{ .path = ex.src },
+            .root_source_file = b.path(ex.src),
             .target = target,
             .optimize = optimize,
         });
@@ -72,7 +72,7 @@ pub fn build(b: *std.Build) void {
         run_all.dependOn(&run_cmd.step);
 
         const t = b.addTest(.{
-            .root_source_file = .{ .path = ex.src },
+            .root_source_file = b.path(ex.src),
             .target = target,
             .optimize = optimize,
         });
@@ -84,12 +84,12 @@ pub fn build(b: *std.Build) void {
     // Aggregate test step
     const all_tests = b.step("test", "Run tests for all examples");
     inline for (lang_examples) |ex| {
-        const t = b.addTest(.{ .root_source_file = .{ .path = ex.src }, .target = target, .optimize = optimize });
+        const t = b.addTest(.{ .root_source_file = b.path(ex.src), .target = target, .optimize = optimize });
         const run_tests = b.addRunArtifact(t);
         all_tests.dependOn(&run_tests.step);
     }
     inline for (std_examples) |ex| {
-        const t = b.addTest(.{ .root_source_file = .{ .path = ex.src }, .target = target, .optimize = optimize });
+        const t = b.addTest(.{ .root_source_file = b.path(ex.src), .target = target, .optimize = optimize });
         const run_tests = b.addRunArtifact(t);
         all_tests.dependOn(&run_tests.step);
     }

@@ -3,9 +3,9 @@ set -euo pipefail
 
 # Install a local Zig toolchain into .tools/zig
 # Usage: scripts/bootstrap_zig.sh [version]
-# Defaults to 0.12.0
+# Defaults to 0.14.0
 
-VERSION="${1:-0.12.0}"
+VERSION="${1:-0.14.0}"
 OS="$(uname -s)"
 ARCH="$(uname -m)"
 

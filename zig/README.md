@@ -4,14 +4,14 @@ This repository contains a hands-on tutorial for Zig, with runnable examples cov
 
 ### Prerequisites
 
-- Zig 0.11 or newer installed and on your PATH
+- Zig 0.14 (project bootstraps a local toolchain automatically)
 
 ### Quick Start
 
-- Build all executables: `zig build`
-- Run all examples: `zig build run-all`
-- Run tests: `zig build test`
-- Format code: `zig build fmt` or `zig fmt .`
+- Build all executables: `make build`
+- Run all examples: `make run-all`
+- Run tests: `make test`
+- Format code: `make fmt`
 
 ### Structure
 
