@@ -1,0 +1,30 @@
+# Compiled binaries
+bin/
+*.o
+*.exe
+*.out
+
+# Quality reports and logs
+quality_reports/
+*.log
+
+# Test files
+test_file.txt
+
+# Temporary files
+*.tmp
+*.temp
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Backup files
+*.bak
+*.backup
