@@ -1,0 +1,7 @@
+/home/aquila/rust/phase3-advanced/web-scraper/target/debug/deps/scopeguard-675bcd8d02509606.d: /home/aquila/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/scopeguard-1.2.0/src/lib.rs
+
+/home/aquila/rust/phase3-advanced/web-scraper/target/debug/deps/libscopeguard-675bcd8d02509606.rlib: /home/aquila/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/scopeguard-1.2.0/src/lib.rs
+
+/home/aquila/rust/phase3-advanced/web-scraper/target/debug/deps/libscopeguard-675bcd8d02509606.rmeta: /home/aquila/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/scopeguard-1.2.0/src/lib.rs
+
+/home/aquila/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/scopeguard-1.2.0/src/lib.rs:

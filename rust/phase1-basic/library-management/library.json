@@ -1,0 +1,12 @@
+{
+  "books": {
+    "978-1492073106": {
+      "title": "The Rust Book",
+      "author": "Steve Klabnik",
+      "isbn": "978-1492073106",
+      "book_type": "Textbook",
+      "status": "Available",
+      "added_date": "2025-09-12"
+    }
+  }
+}
