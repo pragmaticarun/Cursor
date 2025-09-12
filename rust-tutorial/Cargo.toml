@@ -11,3 +11,18 @@ members = [
   "ch09_memory_management",
   "ch10_resources"
 ]
+resolver = "2"
+
+[workspace]
+members = [
+  "ch01_syntax_semantics",
+  "ch02_types_structures",
+  "ch03_control_flow",
+  "ch04_functions_modules",
+  "ch05_error_handling",
+  "ch06_std_apis",
+  "ch07_idioms_style",
+  "ch08_build_tools",
+  "ch09_memory_management",
+  "ch10_resources"
+]
