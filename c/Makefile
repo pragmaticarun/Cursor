@@ -235,6 +235,10 @@ help:
 	@echo "  types, control_flow, functions, arrays_strings, pointers,"
 	@echo "  stdio, stdlib, strings, advanced_types, best_practices,"
 	@echo "  debugging_profiling, performance_optimization"
+	@echo ""
+	@echo "Ordered Map Implementation:"
+	@echo "  See ordered_map/ directory for complete implementation"
+	@echo "  cd ordered_map && make help"
 
 # Legacy targets for backward compatibility
 run: run-all

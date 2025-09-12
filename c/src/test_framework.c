@@ -34,7 +34,9 @@ void print_test_summary(int passed, int total) {
     printf("Passed: %d\n", passed);
     printf("Failed: %d\n", total - passed);
     
-    if (passed == total) {
+    if (total == 0) {
+        printf("No tests run.\n");
+    } else if (passed == total) {
         printf("All tests passed! ✓\n");
     } else {
         printf("Some tests failed! ✗\n");
