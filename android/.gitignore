@@ -1,0 +1,23 @@
+# Gradle
+.gradle/
+build/
+local.properties
+
+# IDE
+.idea/
+*.iml
+*.iws
+
+# Android
+app/release/
+app/debug/
+*.apk
+*.aab
+*.ap_
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node.js (signaling server)
+signaling-server/node_modules/

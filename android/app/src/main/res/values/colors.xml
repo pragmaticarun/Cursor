@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary brand color -->
+    <color name="primary">#FF6750A4</color>
+    <color name="primary_dark">#FF4F378B</color>
+    <color name="primary_light">#FFEADDFF</color>
+    <color name="on_primary">#FFFFFFFF</color>
+
+    <!-- Secondary color -->
+    <color name="secondary">#FF625B71</color>
+    <color name="secondary_light">#FFE8DEF8</color>
+
+    <!-- Background colors -->
+    <color name="background">#FF1C1B1F</color>
+    <color name="surface">#FF2B2930</color>
+    <color name="surface_variant">#FF49454F</color>
+
+    <!-- Text colors -->
+    <color name="text_primary">#FFE6E1E5</color>
+    <color name="text_secondary">#FFCAC4D0</color>
+    <color name="text_hint">#FF938F99</color>
+
+    <!-- Call controls -->
+    <color name="end_call">#FFE53935</color>
+    <color name="control_button_bg">#FF49454F</color>
+    <color name="speaker_active">#FF4CAF50</color>
+    <color name="mute_active">#FFE53935</color>
+
+    <!-- Status colors -->
+    <color name="connected">#FF4CAF50</color>
+    <color name="connecting">#FFFFC107</color>
+    <color name="disconnected">#FFE53935</color>
+
+    <!-- Material Theme colors -->
+    <color name="md_theme_dark_primary">#FF6750A4</color>
+    <color name="md_theme_dark_onPrimary">#FFFFFFFF</color>
+    <color name="md_theme_dark_primaryContainer">#FF4F378B</color>
+    <color name="md_theme_dark_background">#FF1C1B1F</color>
+    <color name="md_theme_dark_surface">#FF2B2930</color>
+
+    <!-- Status bar -->
+    <color name="status_bar">#FF141218</color>
+</resources>
