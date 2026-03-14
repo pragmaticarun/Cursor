@@ -94,6 +94,116 @@ On **Device B** (or Emulator 2):
 3. Tap **Join Room**
 4. The call connects automatically
 
+### 4. Expose the Server with ngrok (Remote / Internet Access)
+
+If the two Android devices are **not on the same local network** (e.g., different Wi-Fi, mobile data, or remote testing), you can use [ngrok](https://ngrok.com) to expose your local signaling server to the internet.
+
+#### Step 1: Install ngrok
+
+**macOS** (Homebrew):
+```bash
+brew install ngrok
+```
+
+**Linux** (snap):
+```bash
+sudo snap install ngrok
+```
+
+**Linux** (manual):
+```bash
+curl -sSL https://ngrok-agent.s3.amazonaws.com/ngrok-v3-stable-linux-amd64.tgz | sudo tar xz -C /usr/local/bin
+```
+
+**Windows** (Chocolatey):
+```bash
+choco install ngrok
+```
+
+Or download directly from [https://ngrok.com/download](https://ngrok.com/download).
+
+#### Step 2: Create an ngrok Account (Free)
+
+1. Sign up at [https://dashboard.ngrok.com/signup](https://dashboard.ngrok.com/signup)
+2. Copy your **Authtoken** from [https://dashboard.ngrok.com/get-started/your-authtoken](https://dashboard.ngrok.com/get-started/your-authtoken)
+3. Authenticate your ngrok installation:
+
+```bash
+ngrok config add-authtoken YOUR_AUTH_TOKEN
+```
+
+#### Step 3: Start the Signaling Server
+
+```bash
+cd signaling-server
+npm install
+npm start
+```
+
+This starts the WebSocket server on port **8080**.
+
+#### Step 4: Start the ngrok Tunnel
+
+Open a **second terminal** and run:
+
+```bash
+ngrok http 8080
+```
+
+ngrok will display output like this:
+
+```
+Session Status                online
+Forwarding                    https://a1b2c3d4e5f6.ngrok-free.app -> http://localhost:8080
+```
+
+Copy the **Forwarding URL** (e.g., `https://a1b2c3d4e5f6.ngrok-free.app`).
+
+#### Step 5: Connect from the Android App
+
+In the app's **Signaling Server URL** field, convert the ngrok HTTPS URL to a **WSS** (WebSocket Secure) URL:
+
+```
+wss://a1b2c3d4e5f6.ngrok-free.app
+```
+
+> **Important:** Replace `https://` with `wss://` — not `ws://`. ngrok provides a TLS-secured tunnel, so the WebSocket connection must use `wss://` (WebSocket Secure).
+
+Both devices enter:
+- **Server URL:** `wss://a1b2c3d4e5f6.ngrok-free.app`
+- **Room ID:** any shared string (e.g., `my-room`)
+
+Then tap **Join Room** on both devices.
+
+#### ngrok Tips
+
+| Tip | Details |
+|-----|---------|
+| **Free tier limits** | The free plan gives you one tunnel with a random subdomain that changes each restart. You get a connection limit per minute. |
+| **Fixed subdomain** | On a paid plan, use `ngrok http --domain=your-name.ngrok-free.app 8080` for a stable URL. |
+| **Inspect traffic** | Open [http://127.0.0.1:4040](http://127.0.0.1:4040) in your browser to see all WebSocket frames flowing through ngrok in real time. |
+| **Connection drops** | If ngrok restarts, you'll get a new URL. Update the app's server URL field accordingly. |
+| **Firewall-friendly** | ngrok works behind corporate firewalls and NATs — no port forwarding required on your router. |
+
+#### Complete ngrok Workflow (Quick Reference)
+
+```bash
+# Terminal 1 — start the signaling server
+cd signaling-server
+npm install
+npm start
+# Output: Signaling server running on ws://0.0.0.0:8080
+
+# Terminal 2 — expose it via ngrok
+ngrok http 8080
+# Output: Forwarding https://a1b2c3d4e5f6.ngrok-free.app -> http://localhost:8080
+
+# In the Android app on both devices:
+#   Server URL:  wss://a1b2c3d4e5f6.ngrok-free.app
+#   Room ID:     my-room
+#   Tap "Join Room"
+```
+
 ### Testing on Emulators
 
 When using Android emulators on the same machine:
@@ -179,6 +289,13 @@ The app requires the following permissions:
 - Check the logcat output for WebRTC errors
 - Ensure ICE candidates are being exchanged properly
 - Verify the signaling server is relaying messages correctly
+
+### ngrok connection fails
+- Make sure you used `wss://` (not `ws://` or `https://`) as the URL scheme in the app
+- Check that `ngrok http 8080` is still running in a terminal — the tunnel closes when you stop ngrok
+- Free-tier ngrok URLs change every time you restart; copy the new URL each time
+- Open `http://127.0.0.1:4040` to verify traffic is reaching ngrok
+- If you see a `403` or HTML error page, your ngrok auth token may have expired — re-run `ngrok config add-authtoken`
 
 ## License
 
