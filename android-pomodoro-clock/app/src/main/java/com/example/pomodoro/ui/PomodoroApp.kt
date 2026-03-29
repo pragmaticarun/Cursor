@@ -13,6 +13,8 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -31,6 +33,8 @@ import com.example.pomodoro.PomodoroViewModel
 @Composable
 fun PomodoroApp(viewModel: PomodoroViewModel) {
     val state by viewModel.state.collectAsStateWithLifecycle()
+    val serviceConnected by viewModel.isServiceConnected.collectAsStateWithLifecycle()
+    val snackbarHostState = remember { SnackbarHostState() }
 
     var workDraft by remember(state.workDurationMinutes) { mutableStateOf(state.workDurationMinutes.toString()) }
     var shortBreakDraft by remember(state.shortBreakDurationMinutes) { mutableStateOf(state.shortBreakDurationMinutes.toString()) }
@@ -45,6 +49,11 @@ fun PomodoroApp(viewModel: PomodoroViewModel) {
         shortBreakDraft = state.shortBreakDurationMinutes.toString()
         longBreakDraft = state.longBreakDurationMinutes.toString()
     }
+    LaunchedEffect(serviceConnected) {
+        if (!serviceConnected) {
+            snackbarHostState.showSnackbar("Connecting timer service...")
+        }
+    }
 
     Column(
         modifier = Modifier
@@ -57,6 +66,7 @@ fun PomodoroApp(viewModel: PomodoroViewModel) {
             style = MaterialTheme.typography.headlineMedium,
             fontWeight = FontWeight.Bold
         )
+        SnackbarHost(hostState = snackbarHostState)
 
         Card(modifier = Modifier.fillMaxWidth()) {
             Column(
@@ -87,19 +97,31 @@ fun PomodoroApp(viewModel: PomodoroViewModel) {
 
         Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
             if (state.isRunning) {
-                OutlinedButton(onClick = viewModel::pause) {
+                OutlinedButton(
+                    onClick = viewModel::pause,
+                    enabled = serviceConnected
+                ) {
                     Text("Pause")
                 }
             } else {
-                Button(onClick = viewModel::start) {
+                Button(
+                    onClick = viewModel::start,
+                    enabled = serviceConnected
+                ) {
                     Text("Start")
                 }
             }
 
-            OutlinedButton(onClick = viewModel::resetCurrentPhase) {
+            OutlinedButton(
+                onClick = viewModel::resetCurrentPhase,
+                enabled = serviceConnected
+            ) {
                 Text("Reset")
             }
-            OutlinedButton(onClick = viewModel::skipToNextPhase) {
+            OutlinedButton(
+                onClick = viewModel::skipToNextPhase,
+                enabled = serviceConnected
+            ) {
                 Text("Skip")
             }
         }
@@ -154,7 +176,8 @@ fun PomodoroApp(viewModel: PomodoroViewModel) {
                     }
                     Switch(
                         checked = state.autoStartNextPhase,
-                        onCheckedChange = viewModel::setAutoStart
+                        onCheckedChange = viewModel::setAutoStart,
+                        enabled = serviceConnected
                     )
                 }
 

@@ -1,11 +1,15 @@
 package com.example.pomodoro
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
 enum class PomodoroPhase {
     WORK,
     SHORT_BREAK,
     LONG_BREAK
 }
 
+@Parcelize
 data class PomodoroState(
     val phase: PomodoroPhase = PomodoroPhase.WORK,
     val isRunning: Boolean = false,
@@ -17,7 +21,7 @@ data class PomodoroState(
     val longBreakDurationMinutes: Int = 15,
     val cyclesBeforeLongBreak: Int = 4,
     val autoStartNextPhase: Boolean = true
-) {
+) : Parcelable {
     fun formattedRemainingTime(): String {
         val minutes = remainingSeconds / 60
         val seconds = remainingSeconds % 60

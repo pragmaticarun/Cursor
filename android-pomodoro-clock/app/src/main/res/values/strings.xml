@@ -14,4 +14,12 @@
     <string name="sessions_until_long_break">Work sessions until long break</string>
     <string name="save_settings">Save settings</string>
     <string name="completed_sessions">Completed work sessions</string>
+    <string name="notification_channel_name">Pomodoro timer</string>
+    <string name="notification_channel_description">Keeps the pomodoro timer active in the background</string>
+    <string name="notification_content_template">%1$s • %2$s remaining</string>
+    <string name="notification_permission_rationale">Enable notifications so the timer can run reliably in the background.</string>
+    <string name="focus_time">Focus Time</string>
+    <string name="short_break">Short Break</string>
+    <string name="long_break">Long Break</string>
+    <string name="stop_service">Stop</string>
 </resources>

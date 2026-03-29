@@ -17,6 +17,11 @@ A standalone Android app implementing the Pomodoro technique with Jetpack Compos
 - Completed focus session counter
 - Auto-start toggle for the next phase
 - Progress display (percentage + mm:ss countdown)
+- Foreground service-backed timer for improved reliability while app is backgrounded
+- Persistent notification with timer state and quick actions:
+  - Start / Pause
+  - Reset
+  - Skip phase
 
 ## Tech stack
 
@@ -43,5 +48,5 @@ A standalone Android app implementing the Pomodoro technique with Jetpack Compos
 
 ## Notes
 
-- This implementation keeps timing in-app through ViewModel coroutines.
-- For background execution, notifications, and persistence across process death, add a foreground service and local storage in a future iteration.
+- Timer execution is owned by a foreground service and mirrored to UI through broadcasts.
+- Notification actions dispatch directly to the service for quick control outside the app.
