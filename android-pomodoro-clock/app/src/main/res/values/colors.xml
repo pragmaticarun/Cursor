@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="workColor">#FF6B6B</color>
+    <color name="shortBreakColor">#4ECDC4</color>
+    <color name="longBreakColor">#5C7AEA</color>
+</resources>
