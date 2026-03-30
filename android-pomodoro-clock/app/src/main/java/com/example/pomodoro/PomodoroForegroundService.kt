@@ -252,6 +252,7 @@ class PomodoroForegroundService : Service() {
     private fun broadcastState() {
         sendBroadcast(
             Intent(PomodoroServiceContract.ACTION_STATE_CHANGED).apply {
+                setPackage(packageName)
                 putExtra(PomodoroServiceContract.EXTRA_STATE, _state.value)
             }
         )
