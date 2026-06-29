@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.pomodoro.PomodoroPhase
 import com.example.pomodoro.PomodoroViewModel
+import com.example.pomodoro.ui.theme.phaseColor
 
 @Composable
 fun PomodoroApp(viewModel: PomodoroViewModel) {
@@ -78,11 +79,13 @@ fun PomodoroApp(viewModel: PomodoroViewModel) {
                 Text(
                     text = state.phase.label,
                     style = MaterialTheme.typography.titleMedium,
-                    fontWeight = FontWeight.Medium
+                    fontWeight = FontWeight.Medium,
+                    color = state.phase.phaseColor()
                 )
                 Text(
                     text = state.formattedRemainingTime(),
-                    style = MaterialTheme.typography.displayMedium
+                    style = MaterialTheme.typography.displayMedium,
+                    color = state.phase.phaseColor()
                 )
                 Text(
                     text = "Progress: ${state.progressPercent()}%",
