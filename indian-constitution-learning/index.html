@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="An interactive, responsive web app to learn the Constitution of India: its structure, detailed explanations of key articles, flashcards and quizzes." />
+  <title>Learn the Indian Constitution</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- ===================== HEADER / NAVBAR ===================== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#overview" data-nav="overview">
+        <span class="brand-emblem" aria-hidden="true">&#9883;</span>
+        <span class="brand-text">
+          <strong>Samvidhaan</strong>
+          <small>Learn the Indian Constitution</small>
+        </span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="main-nav" id="mainNav" aria-label="Primary">
+        <a href="#overview"   class="nav-link" data-nav="overview">Overview</a>
+        <a href="#structure"  class="nav-link" data-nav="structure">Structure</a>
+        <a href="#articles"   class="nav-link" data-nav="articles">Articles</a>
+        <a href="#flashcards" class="nav-link" data-nav="flashcards">Flashcards</a>
+        <a href="#quiz"       class="nav-link" data-nav="quiz">Quiz</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">&#9728;</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="app">
+    <!-- ======================= OVERVIEW ======================= -->
+    <section class="view" id="view-overview">
+      <div class="hero">
+        <div class="hero-content">
+          <p class="eyebrow">We, the People of India</p>
+          <h1>Understand the <span class="accent">Constitution of India</span></h1>
+          <p class="hero-sub">
+            Explore the structure of the Constitution, read detailed explanations of its
+            most important articles, and test your knowledge with flashcards and quizzes.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#structure" data-nav="structure">Explore the Structure</a>
+            <a class="btn btn-ghost" href="#quiz" data-nav="quiz">Take a Quiz</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-pad">
+        <h2 class="section-title">Quick Facts</h2>
+        <div class="facts-grid" id="factsGrid"></div>
+
+        <h2 class="section-title">The Preamble</h2>
+        <article class="preamble-card">
+          <pre class="preamble-text" id="preambleText"></pre>
+          <div class="preamble-notes">
+            <h3>Key points about the Preamble</h3>
+            <ul id="preambleNotes"></ul>
+          </div>
+        </article>
+
+        <h2 class="section-title">How to use this site</h2>
+        <div class="howto-grid">
+          <div class="howto-card"><span class="howto-num">1</span><h3>Structure</h3><p>Browse all 25 Parts and 12 Schedules to see how the Constitution is organised.</p></div>
+          <div class="howto-card"><span class="howto-num">2</span><h3>Articles</h3><p>Read plain-language explanations of key articles. Search or filter by Part.</p></div>
+          <div class="howto-card"><span class="howto-num">3</span><h3>Flashcards</h3><p>Flip cards to actively recall important facts and concepts.</p></div>
+          <div class="howto-card"><span class="howto-num">4</span><h3>Quiz</h3><p>Answer multiple-choice questions and get instant explanations.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= STRUCTURE ======================= -->
+    <section class="view" id="view-structure" hidden>
+      <div class="section-pad">
+        <h1 class="page-title">Structure of the Constitution</h1>
+        <p class="page-lead">
+          The Constitution of India is the longest written constitution of any sovereign country.
+          It is organised into <strong>Parts</strong> (containing the Articles) and
+          <strong>Schedules</strong> (lists and tables that support the Articles).
+        </p>
+
+        <h2 class="section-title">The Parts</h2>
+        <div class="parts-grid" id="partsGrid"></div>
+
+        <h2 class="section-title">The Schedules</h2>
+        <div class="schedules-grid" id="schedulesGrid"></div>
+      </div>
+    </section>
+
+    <!-- ======================== ARTICLES ======================== -->
+    <section class="view" id="view-articles" hidden>
+      <div class="section-pad">
+        <h1 class="page-title">Articles Explained</h1>
+        <p class="page-lead">Detailed, plain-language explanations of the most important articles. Use the search box or filter by Part.</p>
+
+        <div class="articles-controls">
+          <input type="search" id="articleSearch" class="search-input" placeholder="Search articles (e.g. 'equality', 'emergency', 'Article 21')" aria-label="Search articles" />
+          <select id="partFilter" class="part-filter" aria-label="Filter by Part"></select>
+        </div>
+
+        <p class="result-count" id="articleCount" aria-live="polite"></p>
+        <div class="articles-list" id="articlesList"></div>
+      </div>
+    </section>
+
+    <!-- ======================= FLASHCARDS ======================= -->
+    <section class="view" id="view-flashcards" hidden>
+      <div class="section-pad">
+        <h1 class="page-title">Flashcards</h1>
+        <p class="page-lead">Click a card (or press Space) to flip it. Use the buttons to move through the deck and shuffle.</p>
+
+        <div class="flashcard-stage">
+          <div class="flashcard" id="flashcard" tabindex="0" role="button" aria-label="Flashcard. Click to flip.">
+            <div class="flashcard-inner">
+              <div class="flashcard-face flashcard-front">
+                <span class="flashcard-tag">Question</span>
+                <p id="flashFront"></p>
+                <span class="flip-hint">Click to reveal answer</span>
+              </div>
+              <div class="flashcard-face flashcard-back">
+                <span class="flashcard-tag">Answer</span>
+                <p id="flashBack"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flashcard-controls">
+          <button class="btn btn-ghost" id="flashPrev">&#8592; Previous</button>
+          <span class="flashcard-progress" id="flashProgress"></span>
+          <button class="btn btn-ghost" id="flashNext">Next &#8594;</button>
+          <button class="btn btn-primary" id="flashShuffle">Shuffle</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================== QUIZ ========================== -->
+    <section class="view" id="view-quiz" hidden>
+      <div class="section-pad">
+        <h1 class="page-title">Knowledge Check Quiz</h1>
+        <p class="page-lead">Choose the correct answer. You will get instant feedback and an explanation.</p>
+
+        <div class="quiz-card" id="quizCard">
+          <div class="quiz-top">
+            <span class="quiz-progress" id="quizProgress"></span>
+            <span class="quiz-score" id="quizScore"></span>
+          </div>
+          <div class="quiz-progressbar"><div class="quiz-progressbar-fill" id="quizBar"></div></div>
+          <h2 class="quiz-question" id="quizQuestion"></h2>
+          <div class="quiz-options" id="quizOptions"></div>
+          <p class="quiz-explain" id="quizExplain" hidden></p>
+          <div class="quiz-actions">
+            <button class="btn btn-primary" id="quizNext" disabled>Next Question</button>
+          </div>
+        </div>
+
+        <div class="quiz-result" id="quizResult" hidden>
+          <h2>Quiz complete!</h2>
+          <p class="quiz-final-score" id="quizFinalScore"></p>
+          <p id="quizFeedback"></p>
+          <button class="btn btn-primary" id="quizRestart">Try Again</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Built for learning &mdash; an educational project about the Constitution of India.</p>
+    <p class="footer-note">Content is simplified for study purposes. Always refer to the official text for legal accuracy.</p>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
