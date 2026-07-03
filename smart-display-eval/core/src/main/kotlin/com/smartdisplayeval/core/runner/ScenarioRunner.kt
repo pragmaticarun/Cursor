@@ -34,6 +34,13 @@ class ScenarioRunner(
     private val source: FrameSource,
     private val pipeline: FrameAnalysisPipeline = FrameAnalysisPipeline(),
     private val listener: RunnerListener? = null,
+    /**
+     * When true, the controller and frame source are left open after the run
+     * finishes. Use this for a live device where the ADB connection and camera
+     * are reused across scenarios; leave false for one-shot recorded/scripted
+     * sources so they are released automatically.
+     */
+    private val keepResourcesOpen: Boolean = false,
 ) {
     /** One-frame lookahead so we can decide when a step's window is complete. */
     private var pending: Frame? = null
@@ -52,8 +59,10 @@ class ScenarioRunner(
         }
 
         val summary = pipeline.finish(avSyncMaxMs = null, lastTimestampMs = lastTimestampMs)
-        controller.close()
-        source.close()
+        if (!keepResourcesOpen) {
+            controller.close()
+            source.close()
+        }
 
         return EvalReport(
             scenarioName = scenario.name,

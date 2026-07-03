@@ -114,6 +114,7 @@ class EvalViewModel : ViewModel() {
                     source = frameSource,
                     pipeline = FrameAnalysisPipeline(),
                     listener = listener,
+                    keepResourcesOpen = true, // reuse the live ADB connection + camera across runs
                 ).run(scenario)
             }
             _uiState.update {
