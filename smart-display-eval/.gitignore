@@ -1,0 +1,25 @@
+# Gradle
+.gradle/
+build/
+local.properties
+
+# IDE
+.idea/
+*.iml
+*.iws
+.vscode/
+
+# Android
+app/release/
+app/debug/
+*.apk
+*.aab
+*.ap_
+
+# Local build output from the standalone Kotlin toolchain
+*.jar
+!gradle/wrapper/gradle-wrapper.jar
+
+# OS
+.DS_Store
+Thumbs.db
