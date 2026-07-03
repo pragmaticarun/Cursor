@@ -8,6 +8,7 @@ import com.smartdisplayeval.core.control.FrameSource
 import com.smartdisplayeval.core.control.RemoteController
 import com.smartdisplayeval.core.frame.Frame
 import com.smartdisplayeval.core.pipeline.FrameAnalysisPipeline
+import com.smartdisplayeval.core.pipeline.FrameResult
 import com.smartdisplayeval.core.report.EvalReport
 import com.smartdisplayeval.core.report.ExpectationResult
 import com.smartdisplayeval.core.report.StepResult
@@ -32,6 +33,7 @@ class ScenarioRunner(
     private val controller: RemoteController,
     private val source: FrameSource,
     private val pipeline: FrameAnalysisPipeline = FrameAnalysisPipeline(),
+    private val listener: RunnerListener? = null,
 ) {
     /** One-frame lookahead so we can decide when a step's window is complete. */
     private var pending: Frame? = null
@@ -66,6 +68,7 @@ class ScenarioRunner(
     }
 
     private fun runStep(step: Step): StepResult {
+        listener?.onStepStart(step)
         dispatch(step.action)
 
         val windowStart = lastTimestampMs
@@ -80,10 +83,12 @@ class ScenarioRunner(
 
             val result = pipeline.onFrame(frame)
             collector.accept(frame, result.scene.type, result.scene.motion, result.artifacts)
+            listener?.onFrame(result)
+            result.artifacts.forEach { listener?.onArtifact(it) }
         }
 
         val expectationResults = step.expectations.map { evaluate(it, collector) }
-        return StepResult(
+        val stepResult = StepResult(
             name = step.name,
             actionDescription = describe(step.action),
             startMs = windowStart,
@@ -91,6 +96,8 @@ class ScenarioRunner(
             expectationResults = expectationResults,
             artifacts = collector.artifacts,
         )
+        listener?.onStepComplete(stepResult)
+        return stepResult
     }
 
     private fun dispatch(action: StepAction) {

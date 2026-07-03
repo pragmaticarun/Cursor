@@ -1,0 +1,23 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <path
+        android:fillColor="#6C5CE7"
+        android:pathData="M0,0h108v108h-108z" />
+
+    <!-- TV screen -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M26,32h56a4,4 0 0 1 4,4v30a4,4 0 0 1 -4,4h-56a4,4 0 0 1 -4,-4v-30a4,4 0 0 1 4,-4z" />
+    <!-- stand -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M46,74h16v4h-16z" />
+    <!-- play / scan glyph -->
+    <path
+        android:fillColor="#00B894"
+        android:pathData="M48,44l16,7l-16,7z" />
+</vector>
